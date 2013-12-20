@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.facebook.android</groupId>
+    <artifactId>facebook</artifactId>
+    <version>3.5.3</version>
+    <packaging>apklib</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.sourceEncoding>UTF-8</project.reporting.sourceEncoding>
+
+        <!-- Compilation -->
+        <java.version>1.6</java.version>
+        <!-- Dependencies -->
+        <android.version>4.1.1.4</android.version>
+        <android.platform>17</android.platform>
+    </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>repo</id>
+            <url>https://github.com/donxu/maven-repo/raw/facebook-android-sdk/master/projects</url>
+        </repository>
+    </distributionManagement>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <sourceDirectory>src/main/java</sourceDirectory>
+
+        <plugins>
+            <plugin>
+                <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                <artifactId>android-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <version>3.8.0</version>
+                <configuration>
+                    <nativeLibrariesDirectory>ignored</nativeLibrariesDirectory>
+                    <sdk>
+                        <platform>${android.platform}</platform>
+                    </sdk>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>donxu-libraries</id>
+            <url>https://github.com/donxu/maven-repo/raw/master/libs</url>
+        </repository>
+        <!--<repository>-->
+            <!--<id>pusher-java-client-mvn-repo</id>-->
+            <!--<name>Pusher Java Client Library</name>-->
+            <!--<url>https://raw.github.com/pusher/pusher-java-client/mvn-repo/</url>-->
+            <!--&lt;!&ndash; Update the following as required &ndash;&gt;-->
+            <!--<releases>-->
+                <!--<enabled>true</enabled>-->
+            <!--</releases>-->
+            <!--<snapshots>-->
+                <!--<enabled>true</enabled>-->
+            <!--</snapshots>-->
+        <!--</repository>-->
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android</artifactId>
+            <version>${android.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>support-v4</artifactId>
+            <version>r19</version>
+        </dependency>
+    </dependencies>
+</project>
